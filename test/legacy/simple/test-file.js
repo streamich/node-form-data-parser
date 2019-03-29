@@ -29,19 +29,6 @@ test(function constructor() {
   })();
 });
 
-test(function open() {
-  var WRITE_STREAM;
-  file.path = '/foo';
-
-  gently.expect(WriteStreamStub, 'new', function (path) {
-    WRITE_STREAM = this;
-    assert.strictEqual(path, file.path);
-  });
-
-  file.open();
-  assert.strictEqual(file._writeStream, WRITE_STREAM);
-});
-
 test(function write() {
   var BUFFER = {length: 10},
       CB_STUB,
